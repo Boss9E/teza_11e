@@ -1,0 +1,43 @@
+#include<iostream>
+#include<fstream>
+#include<string.h>
+#include<math.h>
+using namespace std;
+ifstream f("date.in");
+int k,m,n,x[100],a[100][100],p[100];
+void citire()
+{
+    int x,y;
+    f>>n>>m;
+    for(int i=1;i<=m;i++)
+    {
+        f>>x>>y;
+        a[x][y]=1;
+    }
+ }
+void rw()
+{
+    int i, j, k;
+        for(k=1;k<=n;k++)
+            for(i=1;i<=n;i++)
+                for(j=1;j<=n;j++)
+                    if(i!=j)
+                        if(a[i][j]==0)
+                            a[i][j]=a[i][k]*a[k][j];
+}
+void afis()
+{
+    for(int i=1;i<=n;i++)
+    {
+        cout<<endl;
+        for(int j=1;j<=n;j++)
+        cout<<a[i][j]<<" ";
+    }
+}
+int main()
+{
+    citire();
+    rw();
+    afis();
+    return 0;
+}
